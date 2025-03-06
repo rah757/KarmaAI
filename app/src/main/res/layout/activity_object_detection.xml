@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.camera.view.PreviewView
+        android:id="@+id/previewView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <Button
+        android:id="@+id/captureButton"
+        android:layout_height="200dp"
+        android:layout_width="350dp"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="40dp"
+        android:padding="24dp"
+        android:text="Scan Scene"
+        android:textSize="40sp"
+        android:textColor="#FFFFFF"
+        android:background="@drawable/rounded_button"
+        android:fontFamily="sans-serif-medium"
+        android:elevation="8dp"/>
+</FrameLayout>
