@@ -28,7 +28,7 @@ fun SwipeableHomeScreen(
     onStartFallDetection: () -> Unit,
     onStartObjectDetection: () -> Unit
 ) {
-    // Create a pager state for 3 pages.
+    // Create a pager state for 4 pages.
     val pagerState = rememberPagerState(initialPage = 0)
     val context = LocalContext.current
 
@@ -80,11 +80,15 @@ fun SwipeableHomeScreen(
                 "To Start Navigation. Tap on the screen. To return to emergency detection, swipe left.",
                 TextToSpeech.QUEUE_FLUSH, null, "page2"
             )
+            3 -> tts.speak(
+                "KARMA AI here, how may I assist you?",
+                TextToSpeech.QUEUE_FLUSH, null, "page3"
+            )
         }
     }
 
     HorizontalPager(
-        count = 3,
+        count = 4,
         state = pagerState,
         modifier = Modifier.fillMaxSize()
     ) { page ->
@@ -130,6 +134,22 @@ fun SwipeableHomeScreen(
                 ) {
                     Text(
                         text = "Start Navigation",
+                        style = MaterialTheme.typography.headlineLarge,
+                        textAlign = TextAlign.Center
+                    )
+                }
+            }
+            3 -> {
+                // Fourth screen: Assistant screen.
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(16.dp)
+                        .clickable { /* Optionally trigger TTS again or add an action */ },
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        text = "Hey there, I'm KARMA AI! \nhow may I assist you?",
                         style = MaterialTheme.typography.headlineLarge,
                         textAlign = TextAlign.Center
                     )

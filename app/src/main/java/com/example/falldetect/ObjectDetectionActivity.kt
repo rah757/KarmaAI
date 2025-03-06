@@ -286,7 +286,7 @@ class ObjectDetectionActivity : ComponentActivity(), TextToSpeech.OnInitListener
                                     "role": "user",
                                     "parts": [
                                         {
-                                            "text": "I am a blind person. I want to get a response which explains everything in the image as a glimpse.if there are too many items in the scene, only describe the most prominent things. This is supposed to be a tts input, so do it accordingly. (when u respond, do not refer as image, refer it as scene). Also, i am trying to walk right? so briefly suggest if there is a path for me. "
+                                            "text": "I am a blind person. I want to get a response which explains everything in the image as a glimpse. if there are too many items in the scene, only describe the most prominent things. This is supposed to be a tts input, so do it accordingly. (when u respond, do not refer as image, refer it as scene). Also, i am trying to walk right? so briefly suggest if there is a path for me. if there is something specific like cash or so, you can say the denomination and so on.  "
                                         },
                                         {
                                             "inlineData": {
