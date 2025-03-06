@@ -11,6 +11,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
+import android.content.Intent
+import android.widget.Toast
+
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -57,7 +60,6 @@ fun SwipeableHomeScreen(
 
     // Trigger an initial speech immediately after composition.
     LaunchedEffect(Unit) {
-        // Wait a little to ensure TTS is ready.
         delay(500)
         tts.speak(
             "Welcome to KARMA AI. Swipe left to proceed",
@@ -65,7 +67,7 @@ fun SwipeableHomeScreen(
         )
     }
 
-    // Speak out the page content when the current page changes.
+    // Speak out page content when current page changes.
     LaunchedEffect(key1 = pagerState.currentPage) {
         when (pagerState.currentPage) {
             0 -> tts.speak(
@@ -77,7 +79,7 @@ fun SwipeableHomeScreen(
                 TextToSpeech.QUEUE_FLUSH, null, "page1"
             )
             2 -> tts.speak(
-                "To Start Navigation. Tap on the screen. To return to emergency detection, swipe left.",
+                "To Start Navigation. Tap on the screen. To speak to Karma AI assistant, swipe left.",
                 TextToSpeech.QUEUE_FLUSH, null, "page2"
             )
             3 -> tts.speak(
@@ -99,7 +101,7 @@ fun SwipeableHomeScreen(
                     modifier = Modifier
                         .fillMaxSize()
                         .padding(16.dp)
-                        .clickable { /* Optionally trigger TTS here */ },
+                        .clickable { },
                     contentAlignment = Alignment.Center
                 ) {
                     Text(
@@ -140,16 +142,22 @@ fun SwipeableHomeScreen(
                 }
             }
             3 -> {
-                // Fourth screen: Assistant screen.
+                // Fourth screen: Launch Voice Assistant.
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
-                        .padding(16.dp)
-                        .clickable { /* Optionally trigger TTS again or add an action */ },
+                        .clickable {
+                            val assistantIntent = Intent("android.intent.action.VOICE_ASSIST")
+                            if (assistantIntent.resolveActivity(context.packageManager) != null) {
+                                context.startActivity(assistantIntent)
+                            } else {
+                                Toast.makeText(context, "Voice assistant not available", Toast.LENGTH_SHORT).show()
+                            }
+                        },
                     contentAlignment = Alignment.Center
                 ) {
                     Text(
-                        text = "Hey there, I'm KARMA AI! \nhow may I assist you?",
+                        text = "Launch Voice Assistant",
                         style = MaterialTheme.typography.headlineLarge,
                         textAlign = TextAlign.Center
                     )
