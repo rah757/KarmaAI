@@ -142,27 +142,25 @@ fun SwipeableHomeScreen(
                 }
             }
             3 -> {
-                // Fourth screen: Launch Voice Assistant.
+                // Fourth screen: ChatGPT Assistant
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
                         .clickable {
-                            val assistantIntent = Intent("android.intent.action.VOICE_ASSIST")
-                            if (assistantIntent.resolveActivity(context.packageManager) != null) {
-                                context.startActivity(assistantIntent)
-                            } else {
-                                Toast.makeText(context, "Voice assistant not available", Toast.LENGTH_SHORT).show()
-                            }
+                            // Start your ChatGPT-based assistant
+                            val intent = Intent(context, ChatGPTAssistantActivity::class.java)
+                            context.startActivity(intent)
                         },
                     contentAlignment = Alignment.Center
                 ) {
                     Text(
-                        text = "Launch Voice Assistant",
+                        text = "KarmaAI Assistant",
                         style = MaterialTheme.typography.headlineLarge,
                         textAlign = TextAlign.Center
                     )
                 }
             }
+
         }
     }
 }

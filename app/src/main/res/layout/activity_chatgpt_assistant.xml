@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/assistant_root"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Optional: A TextView to display conversation or partial results -->
+    <TextView
+        android:id="@+id/assistant_output"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:padding="30dp" />
+
+    <!-- Spacer to push the button to the bottom -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <!-- Mic Button for user input -->
+    <Button
+        android:id="@+id/mic_button"
+        android:layout_width="350dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/rounded_button"
+        android:elevation="8dp"
+        android:fontFamily="sans-serif-medium"
+        android:padding="24dp"
+        android:text="Speak"
+        android:textColor="#FFFFFF"
+        android:textSize="40sp" />
+</LinearLayout>

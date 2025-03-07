@@ -315,7 +315,7 @@ class ObjectDetectionActivity : ComponentActivity(), TextToSpeech.OnInitListener
                     .post(body)
                     .addHeader(
                         "Authorization",
-                        "Bearer ya29.a0AeXRPp5AY6AHre7TFDHiZiJo9k0GCJs0EySrTUGp8_1svti1rRUd0c3BnzdmhAKyAvpHHnLBWhBFG3DHEYqJGGRf2srR3uzzT2KUpg7Wa9iGx_6sL1o3HXAJsBzCVbowX2XAzY3CxlALVQjbUwmpo0Zmlsmz1MkLEAYoMmLoaCgYKAVgSARMSFQHGX2MiOkWOBBIFz3ejWOjGTuMPdw0175"
+                        "Bearer ${BuildConfig.GOOGLE_OAUTH2_TOKEN}"
                     )
                     //.addHeader("Content-Type", "application/json")
                     .build()

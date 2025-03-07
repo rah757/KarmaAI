@@ -46,7 +46,7 @@ class FallDetectionActivity : ComponentActivity(), SensorEventListener, TextToSp
     private var alertStartTime: Long = 0
 
     // Emergency contact details (replace with a real number)
-    private val EMERGENCY_CONTACT_NUMBER = "1234567890"
+    private val EMERGENCY_CONTACT_NUMBER = "5159169595"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

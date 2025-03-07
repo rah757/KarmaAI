@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -16,8 +18,15 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        // Ensure BuildConfig is enabled
+        buildConfigField("String", "OPENAI_API_KEY", "\"your-api-key-here\"")
+        buildConfigField("String", "GOOGLE_OAUTH2_TOKEN", "\"your-google-oauth-token-here\"")
+
     }
+
+
+
 
     buildTypes {
         release {
@@ -37,9 +46,10 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
-}
 
+}
 dependencies {
 
     implementation(libs.androidx.core.ktx)
@@ -90,7 +100,22 @@ dependencies {
     implementation("com.google.accompanist:accompanist-pager:0.28.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
 
+    // If you want to do voice input via Android SpeechRecognizer
+    implementation("com.google.android.material:material:1.8.0")
+
+    // For OkHttp or Retrofit to talk to ChatGPT
+    // or
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+
+    // For coroutines if you want to do calls asynchronously
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+    implementation("com.squareup.okhttp3:okhttp:4.10.0")
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
 
 }
+
+
 
